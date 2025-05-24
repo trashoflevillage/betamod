@@ -75,6 +75,13 @@ public class MineshaftFeature extends Feature {
     }
 
     private void generateMainRoom(World world, Random random, int x, int y, int z, Block planks) {
+        Block[] possibleMossStones = new Block[] {
+                Block.MOSSY_COBBLESTONE,
+                ModBlocks.BLUE_MOSSY_COBBLESTONE,
+                ModBlocks.PINK_MOSSY_COBBLESTONE
+        };
+        Block mossStone = possibleMossStones[random.nextInt(possibleMossStones.length)];
+
         WorldHelper.setCuboid((dx, dy, dz, r) -> {
             return States.AIR.get();
         }, world, new BlockPos(x, y, z), 11, 10, 11);
@@ -82,7 +89,7 @@ public class MineshaftFeature extends Feature {
             return planks.getDefaultState();
         }, world, new BlockPos(x, y - 1, z), 11, 1, 11);
         WorldHelper.setCuboid((dx, dy, dz, r) -> {
-            return random.nextBoolean() ? Block.COBBLESTONE.getDefaultState() : Block.MOSSY_COBBLESTONE.getDefaultState();
+            return random.nextBoolean() ? Block.COBBLESTONE.getDefaultState() : mossStone.getDefaultState();
         }, world, new BlockPos(x - 1, y, z - 1), 13, 11, 13, BlockPredicates.REPLACE_STONE);
     }
 

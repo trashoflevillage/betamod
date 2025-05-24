@@ -22,6 +22,7 @@ public class ModBlocks {
                         BetaMod.NAMESPACE.id(n), Material.STONE
                 );
                 b.setHardness(3);
+                b.setResistance(6);
                 b.setLootCountProvider((random -> 1));
                 b.setLootIdProvider(((metadata, random) -> b.id));
                 return b;
@@ -35,6 +36,7 @@ public class ModBlocks {
                         BetaMod.NAMESPACE.id(n), Material.STONE
                 );
                 b.setHardness(3);
+                b.setResistance(6);
                 b.setLootCountProvider((random -> (int)(random.nextFloat() * 3) + 1));
                 b.setLootIdProvider(((metadata, random) -> ModItems.LIFE_QUARTZ.id));
                 return b;
@@ -69,6 +71,33 @@ public class ModBlocks {
     public static final BlockSet GREEN_PLANKS = registerColoredPlanks("green");
     public static final BlockSet RED_PLANKS = registerColoredPlanks("red");
     public static final BlockSet BLACK_PLANKS = registerColoredPlanks("black");
+
+    public static final Block PINK_MOSSY_COBBLESTONE = registerBlock(
+            "pink_mossy_cobblestone",
+            (n) -> {
+                TrashBlock b = new TrashBlock(
+                        BetaMod.NAMESPACE.id(n), Material.STONE
+                );
+                b.setHardness(2);
+                b.setResistance(6);
+                b.setLootCountProvider((random -> 1));
+                b.setLootIdProvider(((metadata, random) -> b.id));
+                return b;
+            }
+    );
+    public static final Block BLUE_MOSSY_COBBLESTONE = registerBlock(
+            "blue_mossy_cobblestone",
+            (n) -> {
+                TrashBlock b = new TrashBlock(
+                        BetaMod.NAMESPACE.id(n), Material.STONE
+                );
+                b.setHardness(2);
+                b.setResistance(6);
+                b.setLootCountProvider((random -> 1));
+                b.setLootIdProvider(((metadata, random) -> b.id));
+                return b;
+            }
+    );
 
     private static BlockSet registerColoredPlanks(String color) {
         Block block = registerBlock(color + "_planks", (n) -> {
