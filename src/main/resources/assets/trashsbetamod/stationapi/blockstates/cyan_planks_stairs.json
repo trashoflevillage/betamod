@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "trashsbetamod:block/cyan_planks_stairs"
+    },
+    "facing=east": {
+      "model": "trashsbetamod:block/cyan_planks_stairs",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "trashsbetamod:block/cyan_planks_stairs",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "trashsbetamod:block/cyan_planks_stairs",
+      "y": 270
+    }
+  }
+}

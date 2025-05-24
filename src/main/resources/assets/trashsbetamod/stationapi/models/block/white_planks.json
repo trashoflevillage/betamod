@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "trashsbetamod:block/white_planks"
+  }
+}

@@ -1,0 +1,27 @@
+# @ is a shorthand for the current mod id, which is trashsbetamod. E.g: tile.@.redclay.name
+tile.@.copper_ore.name = Copper Ore
+item.@.copper_ingot.name = Copper Ingot
+item.@.copper_sword.name = Copper Sword
+item.@.copper_pickaxe.name = Copper Pickaxe
+item.@.copper_axe.name = Copper Axe
+item.@.copper_shovel.name = Copper Shovel
+item.@.copper_hoe.name = Copper Hoe
+tile.@.life_quartz_ore.name = Life Quartz Ore
+item.@.life_quartz.name = Life Quartz
+tile.@.monster_box.name = Monster Box
+tile.@.white_planks.name = White Planks
+tile.@.orange_planks.name = Orange Planks
+tile.@.magenta_planks.name = Magenta Planks
+tile.@.light_blue_planks.name = Light Blue Planks
+tile.@.yellow_planks.name = Yellow Planks
+tile.@.lime_planks.name = Lime Planks
+tile.@.pink_planks.name = Pink Planks
+tile.@.gray_planks.name = Gray Planks
+tile.@.light_gray_planks.name = Light Gray Planks
+tile.@.cyan_planks.name = Cyan Planks
+tile.@.purple_planks.name = Purple Planks
+tile.@.blue_planks.name = Blue Planks
+tile.@.brown_planks.name = Brown Planks
+tile.@.green_planks.name = Green Planks
+tile.@.red_planks.name = Red Planks
+tile.@.black_planks.name = Black Planks

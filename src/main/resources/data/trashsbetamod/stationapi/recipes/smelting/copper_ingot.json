@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "trashsbetamod:copper_ore"
+  },
+  "result": {
+    "item": "trashsbetamod:copper_ingot"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "trashsbetamod:item/copper_shovel"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "trashsbetamod:block/template/stairs",
+  "textures": {
+    "all": "trashsbetamod:block/yellow_planks"
+  }
+}
