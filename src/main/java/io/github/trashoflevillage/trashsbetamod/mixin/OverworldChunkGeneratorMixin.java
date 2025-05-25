@@ -11,13 +11,6 @@ import java.util.Random;
 
 @Mixin(OverworldChunkGenerator.class)
 public class OverworldChunkGeneratorMixin {
-//    @ModifyConstant(method = "buildSurfaces", constant = @Constant(
-//            intValue = 0, expandZeroConditions = Constant.Condition.LESS_THAN_OR_EQUAL_TO_ZERO, ordinal = 2
-//    ))
-//    public int modifyBedrockHeight(int constant) {
-//        return -64;
-//    }
-
     @Redirect(
             method = "buildSurfaces",
             at = @At(
