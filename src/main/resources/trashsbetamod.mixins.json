@@ -11,6 +11,8 @@
     "MobEntityMixin",
     "MonsterEntityMixin",
     "NetherPortalBlockMixin",
+    "OverworldChunkGeneratorMixin",
+    "OverworldDimensionMixin",
     "ToolRecipesMixin",
     "WeaponRecipesMixin",
     "WorldMixin",
