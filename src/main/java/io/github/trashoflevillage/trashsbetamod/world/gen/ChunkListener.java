@@ -2,6 +2,7 @@ package io.github.trashoflevillage.trashsbetamod.world.gen;
 
 import io.github.trashoflevillage.trashsbetamod.blocks.ModBlocks;
 import io.github.trashoflevillage.trashsbetamod.world.gen.features.MineshaftFeature;
+import io.github.trashoflevillage.trashsbetamod.world.gen.features.PerlinCaveFeature;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
@@ -18,12 +19,16 @@ public class ChunkListener {
 
     public static final Feature MINESHAFT = new MineshaftFeature(200);
 
+    public static final Feature PERLIN_CAVE = new PerlinCaveFeature(100, -0.2);
+
     public static void populate(WorldGenEvent.ChunkDecoration event) {
         if (event.world.dimension instanceof OverworldDimension) populateOverworld(event);
         if (event.world.dimension instanceof NetherDimension) populateNether(event);
     }
 
     public static void populateOverworld(WorldGenEvent.ChunkDecoration event) {
+        PERLIN_CAVE.generate(event.world, event.random, event.x, event.random.nextInt(75), event.z);
+
         COPPER_ORE_SCATTERED.generate(event.world, event.random, event.x, event.random.nextInt(128), event.z);
         LIFE_QUARTZ_ORE_SCATTERED.generate(event.world, event.random, event.x, event.random.nextInt(30), event.z);
 
