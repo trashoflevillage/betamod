@@ -150,6 +150,15 @@ public class MineshaftFeature extends Feature {
                 if (random.nextBoolean()) generateMonsterBox(world, random, decorPos);
                 else generateMineshaftChest(world, random, decorPos);
             }
+            // cobwebs
+            if (random.nextFloat() < 0.2f) {
+                int dx = x + random.nextInt(-2, 3);
+                int dy = y + random.nextInt(-2, 3);
+                int dz = z + random.nextInt(-2, 3);
+                BlockPos decorPos = new BlockPos(dx, dy, dz);
+                if (!world.getBlockState(decorPos).isAir()) decorPos.add(0, 1, 0);
+                WorldHelper.setBlockStateWithPredicate((x1, y1, z1, r) -> Block.COBWEB.getDefaultState(), world, decorPos, BlockPredicates.REPLACE_AIR);
+            }
         }
     }
 

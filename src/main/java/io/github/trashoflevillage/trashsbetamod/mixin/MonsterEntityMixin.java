@@ -1,11 +1,11 @@
 package io.github.trashoflevillage.trashsbetamod.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import io.github.trashoflevillage.trashsbetamod.access.WorldMixinAccess;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.MonsterEntity;
 import net.minecraft.entity.mob.PigZombieEntity;
 import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -21,4 +21,12 @@ public class MonsterEntityMixin {
         }
         return original;
     }
+
+//    @ModifyReturnValue(method = "canSpawn", at = @At("TAIL"))
+//    public boolean canSpawn(boolean original) {
+//        if (!original) {
+//            ((WorldMixinAccess)((MonsterEntity)(Object)this).world).isBloodMoon();
+//        }
+//        return true;
+//    }
 }

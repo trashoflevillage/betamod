@@ -1,5 +1,6 @@
 package io.github.trashoflevillage.trashsbetamod.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import io.github.trashoflevillage.trashsbetamod.access.WorldMixinAccess;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -24,17 +25,22 @@ public abstract class WorldMixin implements WorldMixinAccess {
 
     @Inject(method = "tick", at = @At("TAIL"))
     public void postTick(CallbackInfo ci) {
-        if (getTime() % 13000 == 0) {
-            bloodMoon = random.nextFloat() <= 0.1f;
-            if (bloodMoon) {
-                for (PlayerEntity entity : players) entity.sendMessage("§cA blood moon has risen!");
-            }
-        }
+//        if (getTime() % 13000 == 0) {
+//            bloodMoon = random.nextFloat() <= 0.1f;
+//            if (bloodMoon) {
+//                for (PlayerEntity entity : players) entity.sendMessage("§cA blood moon has risen!");
+//            }
+//        }
         if (getTime() % 24000 == 0) bloodMoon = false;
     }
 
     @Override
     public boolean isBloodMoon() {
         return bloodMoon;
+    }
+
+    @ModifyReturnValue(method = "canMonsterSpawn", at = @At("TAIL"))
+    public boolean canMonsterSpawn(boolean original) {
+        return original || isBloodMoon();
     }
 }
