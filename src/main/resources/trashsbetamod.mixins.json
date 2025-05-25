@@ -4,6 +4,7 @@
   "package": "io.github.trashoflevillage.trashsbetamod.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "DungeonFeatureMixin",
     "EntityMixin",
     "FireBlockMixin",
     "LivingEntityMixin",
