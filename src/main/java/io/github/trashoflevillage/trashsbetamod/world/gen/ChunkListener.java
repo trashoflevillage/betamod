@@ -1,15 +1,17 @@
 package io.github.trashoflevillage.trashsbetamod.world.gen;
 
+import io.github.trashoflevillage.trashsbetamod.BetaMod;
 import io.github.trashoflevillage.trashsbetamod.blocks.ModBlocks;
 import io.github.trashoflevillage.trashsbetamod.world.gen.features.MineshaftFeature;
 import io.github.trashoflevillage.trashsbetamod.world.gen.features.PerlinCaveFeature;
-import net.mine_diver.unsafeevents.listener.EventListener;
 import net.minecraft.world.dimension.NetherDimension;
 import net.minecraft.world.dimension.OverworldDimension;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreFeature;
 import net.modificationstation.stationapi.api.event.world.gen.WorldGenEvent;
 import net.modificationstation.stationapi.api.worldgen.feature.VolumetricScatterFeature;
+
+import java.util.Random;
 
 public class ChunkListener {
     public static final Feature COPPER_ORE = new OreFeature(ModBlocks.COPPER_ORE.id, 12);
@@ -27,15 +29,19 @@ public class ChunkListener {
     }
 
     public static void populateOverworld(WorldGenEvent.ChunkDecoration event) {
-        PERLIN_CAVE.generate(event.world, event.random, event.x, event.random.nextInt(75), event.z);
+        PERLIN_CAVE.generate(event.world, event.random, event.x, getRandomYFromBedrock(event.random, 75), event.z);
 
-        COPPER_ORE_SCATTERED.generate(event.world, event.random, event.x, event.random.nextInt(128), event.z);
-        LIFE_QUARTZ_ORE_SCATTERED.generate(event.world, event.random, event.x, event.random.nextInt(30), event.z);
+        COPPER_ORE_SCATTERED.generate(event.world, event.random, event.x, getRandomYFromBedrock(event.random, 128), event.z);
+        LIFE_QUARTZ_ORE_SCATTERED.generate(event.world, event.random, event.x, getRandomYFromBedrock(event.random, 30), event.z);
 
-        MINESHAFT.generate(event.world, event.random, event.x, event.random.nextInt(50), event.z);
+        MINESHAFT.generate(event.world, event.random, event.x, getRandomYFromBedrock(event.random, 50), event.z);
     }
 
     public static void populateNether(WorldGenEvent.ChunkDecoration event) {
 
+    }
+
+    public static int getRandomYFromBedrock(Random random, int max) {
+        return random.nextInt(max - BetaMod.BEDROCK_LEVEL) + BetaMod.BEDROCK_LEVEL;
     }
 }

@@ -28,6 +28,8 @@ public class BetaMod {
 
     public static final Logger LOGGER = NAMESPACE.getLogger();
 
+    public static final int BEDROCK_LEVEL = -64;
+
     @EventListener
     private static void serverInit(InitEvent event) {
 
