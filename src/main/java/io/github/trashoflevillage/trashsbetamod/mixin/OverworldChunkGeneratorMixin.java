@@ -2,16 +2,34 @@ package io.github.trashoflevillage.trashsbetamod.mixin;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.injector.WrapWithCondition;
+import com.llamalad7.mixinextras.sugar.Local;
 import io.github.trashoflevillage.trashsbetamod.BetaMod;
+import io.github.trashoflevillage.trashsbetamod.util.world.BlockPredicates;
+import io.github.trashoflevillage.trashsbetamod.util.world.WorldHelper;
 import io.github.trashoflevillage.trashsbetamod.world.gen.ChunkListener;
+import net.minecraft.block.Block;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.noise.PerlinNoiseSampler;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.chunk.OverworldChunkGenerator;
+import net.minecraft.world.gen.feature.OreFeature;
+import net.modificationstation.stationapi.api.block.BlockState;
+import net.modificationstation.stationapi.api.block.States;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Random;
+import java.util.*;
 
 @Mixin(OverworldChunkGenerator.class)
 public class OverworldChunkGeneratorMixin {
+    @Shadow private Random random;
+
+    @Shadow private World world;
+
     @Redirect(
             method = "buildSurfaces",
             at = @At(
@@ -144,6 +162,18 @@ public class OverworldChunkGeneratorMixin {
         return ChunkListener.getRandomYFromBedrock(random, bound);
     }
 
+    @WrapWithCondition(
+            method = "decorate",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/gen/feature/OreFeature;generate(Lnet/minecraft/world/World;Ljava/util/Random;III)Z",
+                    ordinal = 5
+            )
+    )
+    private boolean removeRedstoneGeneration(OreFeature instance, World random, Random x, int y, int z, int i) {
+        return false;
+    }
+
     @Redirect(
             method = "decorate",
             at = @At(
@@ -179,5 +209,4 @@ public class OverworldChunkGeneratorMixin {
     private int redirectLapis2Y(Random random, int bound) {
         return ChunkListener.getRandomYFromBedrock(random, bound);
     }
-
 }
