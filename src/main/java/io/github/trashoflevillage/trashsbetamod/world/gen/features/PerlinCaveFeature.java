@@ -39,7 +39,7 @@ public class PerlinCaveFeature extends Feature {
                 int distance = Math.abs(pos.getX() - origin.getX())
                         + Math.abs(pos.getY() - origin.getY())
                         + Math.abs(pos.getZ() - origin.getZ());
-                if (distance > 100) threshold -= 0.01 * distance;
+                if (distance > 100) threshold -= (double)distance /200;
 
                 double noise = perlin.sample(pos.x / caveScale, pos.y / caveScale, pos.z / caveScale);
                 BlockState state = world.getBlockState(pos);
@@ -50,6 +50,7 @@ public class PerlinCaveFeature extends Feature {
                             pos,
                             BlockPredicates.BEDROCK_SAFE
                     );
+                    noise = 1;
                 }
                 if (noise <= threshold) {
                     boolean blockCarved = WorldHelper.setBlockStateWithPredicate(
